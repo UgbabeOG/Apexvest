@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/layout/dashboard-layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BrainCircuit, Cpu, ShieldAlert, Zap, Loader2, Sparkles, RefreshCcw } from 'lucide-react';
+import { BrainCircuit, Cpu, ShieldAlert, Zap, Loader2, Sparkles, RefreshCcw, Bitcoin } from 'lucide-react';
 import { analyzeMarketImpact, type AIMarketImpactAnalysisOutput } from '@/ai/flows/ai-market-impact-analysis';
 import { MOCK_CRYPTO, MOCK_REAL_ESTATE } from '@/lib/mock-data';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';

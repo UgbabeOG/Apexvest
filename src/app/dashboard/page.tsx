@@ -17,6 +17,7 @@ import {
 import { MOCK_CRYPTO, MOCK_REAL_ESTATE, MOCK_TRANSACTIONS } from '@/lib/mock-data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function UserDashboard() {
   const totalCrypto = MOCK_CRYPTO.reduce((acc, curr) => acc + (curr.quantity * curr.currentPriceUsd), 0);
