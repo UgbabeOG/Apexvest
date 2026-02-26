@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -12,7 +13,6 @@ import {
   Users, 
   LogOut, 
   Menu, 
-  X,
   TrendingUp,
   ShieldCheck,
   Building2,
@@ -21,6 +21,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Footer } from '@/components/layout/footer';
 
 interface NavItem {
   title: string;
@@ -72,7 +73,7 @@ export function DashboardLayout({ children, role = 'investor' }: { children: Rea
         "fixed inset-y-0 left-0 z-50 w-64 bg-primary text-primary-foreground transition-transform duration-300 transform lg:relative lg:translate-x-0 flex flex-col shadow-2xl",
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="p-6 flex items-center gap-3">
+        <div className="p-6 flex items-center gap-3 cursor-pointer" onClick={() => router.push('/')}>
           <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-lg">
             <TrendingUp className="text-primary h-6 w-6" />
           </div>
@@ -143,10 +144,13 @@ export function DashboardLayout({ children, role = 'investor' }: { children: Rea
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-6 lg:p-10">
-          <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {children}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-6 lg:p-10">
+            <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              {children}
+            </div>
           </div>
+          <Footer />
         </div>
       </main>
     </div>
