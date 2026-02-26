@@ -12,7 +12,8 @@ import {
   Bitcoin, 
   ChevronRight,
   TrendingUp,
-  Activity
+  Activity,
+  Cpu
 } from 'lucide-react';
 import { MOCK_CRYPTO, MOCK_REAL_ESTATE, MOCK_TRANSACTIONS } from '@/lib/mock-data';
 import { Badge } from '@/components/ui/badge';
