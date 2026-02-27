@@ -121,7 +121,7 @@ export const MOCK_REAL_ESTATE: RealEstateHolding[] = [
   },
 ];
 
-export const MOCK_TRANSACTIONS: Transaction[] = [
+export let MOCK_TRANSACTIONS: Transaction[] = [
   {
     id: "tx1",
     type: "deposit",
@@ -159,6 +159,16 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
     status: "completed",
   },
 ];
+
+export const addMockTransaction = (tx: Omit<Transaction, "id" | "date">) => {
+  const newTx: Transaction = {
+    ...tx,
+    id: `tx${MOCK_TRANSACTIONS.length + 1}`,
+    date: new Date().toISOString().split("T")[0],
+  };
+  MOCK_TRANSACTIONS = [newTx, ...MOCK_TRANSACTIONS];
+  return newTx;
+};
 
 export const WATCHLIST = [
   {
