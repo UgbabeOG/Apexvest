@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { INITIAL_USERS, MOCK_TRANSACTIONS } from "@/lib/mock-data";
+import { INITIAL_USERS, MOCK_TRANSACTIONS, addMockUser } from "@/lib/mock-data";
 import {
   Dialog,
   DialogContent,
@@ -43,12 +43,25 @@ export default function AdminDashboard() {
   const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
-  const handleOnboard = (e: React.FormEvent) => {
+  const handleOnboard = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+
+    if (name && email) {
+      addMockUser({
+        name,
+        email,
+        role: "investor",
+        status: "active",
+      });
+    }
+
     setIsDialogOpen(false);
     toast({
       title: "User Onboarded",
-      description: "Invitation email has been sent successfully.",
+      description: `Invitation email has been sent successfully to ${email}.`,
     });
   };
 
@@ -89,6 +102,7 @@ export default function AdminDashboard() {
                     </Label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="John Doe"
                       className="col-span-3"
                       required
@@ -100,6 +114,7 @@ export default function AdminDashboard() {
                     </Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="john@example.com"
                       className="col-span-3"
